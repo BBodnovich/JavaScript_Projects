@@ -31,20 +31,19 @@ class Queue {
 
 
     dequeue() {
-        if (!this.first) {
-            return null;
-        }
+        if (!this.first) return null;
 
+        let firstNode = this.first
         if (this.count === 1) {
             this.first = null;
             this.last = null;
-            this.count --;
-            return this.count;
+        } else {
+            this.first = this.first.next;
+            firstNode.next = null;
         }
 
-        this.first = this.first.next;
         this.count --;
-        return this.count;
+        return firstNode;
     }
 
 
