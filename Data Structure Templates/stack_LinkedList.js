@@ -20,9 +20,8 @@ class LinkedList {
             this.top = newNode;
             this.bottom = newNode;
         } else {
-            const topNode = this.top;
-            this.top.next = newNode;
-            this.top = newNode;
+            newNode.next = this.top;
+            this.top = newNode
         }
 
         this.count ++;
@@ -31,20 +30,18 @@ class LinkedList {
 
 
     pop() {
-        if (this.count === 0) {
-            return undefined;
-        }
+        if (this.count === 0) return undefined;
 
         const topNode = this.top
         this.top = this.top.next;
         topNode.next = null;
 
         this.count --;
-        return topNode;
+        return topNode.value;
     }
 
 
-    peek(index) {
+    peek() {
         return this.top;
     }
 
@@ -60,7 +57,7 @@ class LinkedList {
 
 
     lookup(index) {
-        if (index === 0 || index >= this.count) {
+        if (index < 0 || index >= this.count) {
             return undefined;
         }
 
